@@ -1,0 +1,24 @@
+syntax = "proto3";
+package stellartalk.stellartalk;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "stellartalk/x/stellartalk/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc CreateChat(MsgCreateChat) returns (MsgCreateChatResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateChat {
+  string creator = 1;
+  string content = 2;
+  string sender = 3;
+  string recipient = 4;
+}
+
+message MsgCreateChatResponse {
+}
+
+// this line is used by starport scaffolding # proto/tx/message

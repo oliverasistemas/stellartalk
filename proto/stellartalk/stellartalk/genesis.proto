@@ -1,0 +1,17 @@
+syntax = "proto3";
+package stellartalk.stellartalk;
+
+import "gogoproto/gogo.proto";
+import "stellartalk/stellartalk/params.proto";
+import "stellartalk/stellartalk/chat.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "stellartalk/x/stellartalk/types";
+
+// GenesisState defines the stellartalk module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  repeated Chat chatList = 2 [(gogoproto.nullable) = false];
+  uint64 chatCount = 3;
+  // this line is used by starport scaffolding # genesis/proto/state
+}

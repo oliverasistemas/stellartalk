@@ -1,0 +1,90 @@
+syntax = "proto3";
+package stellartalk.stellartalk;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "stellartalk/stellartalk/params.proto";
+import "stellartalk/stellartalk/chat.proto";
+// this line is used by starport scaffolding # 1
+
+option go_package = "stellartalk/x/stellartalk/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/stellartalk/stellartalk/params";
+  }
+  // Queries a Chat by id.
+	rpc Chat(QueryGetChatRequest) returns (QueryGetChatResponse) {
+		option (google.api.http).get = "/stellartalk/stellartalk/chat/{id}";
+	}
+
+	// Queries a list of Chat items.
+	rpc ChatAll(QueryAllChatRequest) returns (QueryAllChatResponse) {
+		option (google.api.http).get = "/stellartalk/stellartalk/chat";
+	}
+
+// Queries a list of MySentChats items.
+	rpc MySentChats(QueryMySentChatsRequest) returns (QueryMySentChatsResponse) {
+		option (google.api.http).get = "/stellartalk/stellartalk/my_sent_chats";
+	}
+
+// Queries a list of MyReceivedChats items.
+	rpc MyReceivedChats(QueryMyReceivedChatsRequest) returns (QueryMyReceivedChatsResponse) {
+		option (google.api.http).get = "/stellartalk/stellartalk/my_received_chats";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetChatRequest {
+	uint64 id = 1;
+}
+
+message QueryGetChatResponse {
+	Chat Chat = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllChatRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+	string sender = 2;
+	string recipient = 3;
+}
+
+message QueryAllChatResponse {
+	repeated Chat Chat = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryMySentChatsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+	string sender = 2;
+}
+
+message QueryMySentChatsResponse {
+	repeated Chat Chat = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryMyReceivedChatsRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+	string receiver = 2;
+}
+
+message QueryMyReceivedChatsResponse {
+	repeated Chat Chat = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+// this line is used by starport scaffolding # 3

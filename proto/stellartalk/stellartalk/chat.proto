@@ -1,0 +1,12 @@
+syntax = "proto3";
+package stellartalk.stellartalk;
+
+option go_package = "stellartalk/x/stellartalk/types";
+
+message Chat {
+  uint64 id = 1;
+  string content = 2; 
+  string sender = 3; 
+  string recipient = 4; 
+  
+}
