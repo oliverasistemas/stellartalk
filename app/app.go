@@ -506,6 +506,7 @@ func New(
 		app.GetSubspace(stellartalkmoduletypes.ModuleName),
 
 		app.AccountKeeper,
+		app.BankKeeper,
 	)
 	stellartalkModule := stellartalkmodule.NewAppModule(appCodec, app.StellartalkKeeper, app.AccountKeeper, app.BankKeeper)
 

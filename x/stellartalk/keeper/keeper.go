@@ -19,6 +19,7 @@ type (
 		paramstore paramtypes.Subspace
 
 		accountKeeper types.AccountKeeper
+		bankKeeper    types.BankKeeper
 	}
 )
 
@@ -29,6 +30,7 @@ func NewKeeper(
 	ps paramtypes.Subspace,
 
 	accountKeeper types.AccountKeeper,
+	bankKeeper types.BankKeeper,
 ) *Keeper {
 	// set KeyTable if it has not already been set
 	if !ps.HasKeyTable() {
@@ -42,6 +44,7 @@ func NewKeeper(
 		memKey:        memKey,
 		paramstore:    ps,
 		accountKeeper: accountKeeper,
+		bankKeeper:    bankKeeper,
 	}
 }
 
