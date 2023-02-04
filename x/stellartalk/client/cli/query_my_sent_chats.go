@@ -14,7 +14,7 @@ var _ = strconv.Itoa(0)
 func CmdMySentChats() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "my-sent-chats",
-		Short: "Query my sent chats",
+		Short: "List all chats sent from my wallet",
 		Args:  cobra.ExactArgs(0),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 

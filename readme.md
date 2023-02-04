@@ -50,3 +50,20 @@ Example:
 ```shell
 stellartalkd tx stellartalk create-chat "First chat" cosmos10mamzxu2krqdewrjl7s5c3qzjwjvtcyavqlhh2  --from cosmos10mamzxu2krqdewrjl7s5c3qzjwjvtcyavqlhh2  --keyring-backend test
 ```
+
+## Querying chats
+### List all chats
+list-chat         list all chat
+```shell
+stellartalkd query stellartalk list-chat
+```
+
+### List chats sent to my wallet
+```shell
+stellartalkd query stellartalk my-received-chats
+```
+
+### List all chats sent from my wallet
+stellartalkd query stellartalk my-sent-chats
+
+
