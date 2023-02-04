@@ -41,4 +41,12 @@ You should see something similar to this in your console
 ```
 
 ## Sending chats
-Now that your local Stellartalk node is running you can send your first message to other person 
+Now that your local Stellartalk node is running you can send your first message to other person using the following command
+```shell
+  stellartalkd tx stellartalk create-chat [content] [recipient] [flags]
+```
+Example:
+
+```shell
+stellartalkd tx stellartalk create-chat "First chat" cosmos10mamzxu2krqdewrjl7s5c3qzjwjvtcyavqlhh2  --from cosmos10mamzxu2krqdewrjl7s5c3qzjwjvtcyavqlhh2  --keyring-backend test
+```

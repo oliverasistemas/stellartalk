@@ -5,10 +5,9 @@ MESSAGE="The Great Wall of China is not visible from space with the naked eye, d
 
 echo "Creating first chat from $BOB_ADDRESS (Bob) to $ALICE_ADDRESS (Alice)"
 stellartalkd tx bank send  $VALIDATOR_0_ADDRESS $BOB_ADDRESS 2000stake --keyring-backend test
-stellartalkd tx bank send  $VALIDATOR_0_ADDRESS $ALICE_ADDRESS 2000stake --keyring-backend test
+#stellartalkd tx bank send  $VALIDATOR_0_ADDRESS $ALICE_ADDRESS 2000stake --keyring-backend test
 
-stellartalkd tx stellartalk create-chat "$MESSAGE"  "$VALIDATOR_0_ADDRESS" --from "$VALIDATOR_0_ADDRESS" --keyring-backend test
+stellartalkd tx stellartalk create-chat "$MESSAGE"  "$BOB_ADDRESS" --from "$VALIDATOR_0_ADDRESS" --keyring-backend test
 
-#echo "List chats"
-#sleep 10
-#stellartalkd query stellartalk list-chat
+echo "List chats"
+stellartalkd query stellartalk list-chat
